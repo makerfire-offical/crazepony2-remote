@@ -63,6 +63,13 @@ void LoadRCdata(void)
 	remoteData.motor[THROTTLE]=-CONTAIN(-remoteData.motor[THROTTLE],-1000);
 	remoteData.motor[PITCH]=CONTAIN(2000,remoteData.motor[PITCH]);
 	remoteData.motor[PITCH]=-CONTAIN(-remoteData.motor[PITCH],-1000);
+	
+	//摇杆值灵敏度（ROLL\PITCH）
+	const float Q = 0.5;
+	remoteData.motor[ROLL] = 1500 + Q*(remoteData.motor[ROLL]-1500);
+	remoteData.motor[PITCH] = 1500 + Q*(remoteData.motor[PITCH]-1500);
+	
+	
 }
 
 
